@@ -21,9 +21,11 @@ jobs:
         uses: Viostream/github-tag-action@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: |
+      - name: Write version to package.json
+        run: |
           echo "writing tag"
-          sed -i 's/"version": ".*",$/"version": "${{ secrets.GITHUB_TOKEN }}",/' package.json
+          sed -i 's/"version": ".*",$/"version": "'${{ secrets.GITHUB_TOKEN }}'",/' package.json
+          cat package.json
       - run: npm install
       - uses: JS-DevTools/npm-publish@v1
         with:
