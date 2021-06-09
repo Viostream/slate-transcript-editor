@@ -21,6 +21,13 @@ import UndoOutlinedIcon from '@material-ui/icons/UndoOutlined';
 import EmojiSymbolsOutlinedIcon from '@material-ui/icons/EmojiSymbolsOutlined';
 import subtitlesExportOptionsList from '../../util/export-adapters/subtitles-generator/list.js';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSave } from '@fortawesome/free-solid-svg-icons'
+import { faQuestion } from '@fortawesome/free-solid-svg-icons'
+import { faItunesNote } from '@fortawesome/free-brands-svg-icons'
+import { faUndoAlt } from '@fortawesome/free-solid-svg-icons'
+import { faRedoAlt } from '@fortawesome/free-solid-svg-icons'
+
 function SideBtns({
   handleExport,
   isProcessing,
@@ -54,243 +61,24 @@ function SideBtns({
 
   return (
     <Grid container direction="column" justify="flex-start" alignItems="stretch">
-      <Grid item>
-        <Tooltip title={<Typography variant="body1">Export options</Typography>}>
-          <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleMenuClick}>
-            <SaveAltIcon color="primary" /> <KeyboardArrowDownIcon color="primary" />
-          </Button>
-        </Tooltip>
-        <Menu id="simple-menu" anchorEl={anchorMenuEl} keepMounted open={Boolean(anchorMenuEl)} onClose={handleMenuClose}>
-          <MenuItem onClick={handleMenuClose} disabled>
-            <Link style={{ color: 'black' }}>Text Export</Link>
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              handleExport({
-                type: 'text',
-                ext: 'txt',
-                speakers: false,
-                timecodes: false,
-                isDownload: true,
-              });
-              handleMenuClose();
-            }}
-          >
-            <Link color="primary">
-              Text (<code>.txt</code>)
-            </Link>
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              handleExport({
-                type: 'text',
-                ext: 'txt',
-                speakers: true,
-                timecodes: false,
-                isDownload: true,
-              });
-              handleMenuClose();
-            }}
-          >
-            <Link color="primary">Text (Speakers)</Link>
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              handleExport({
-                type: 'text',
-                ext: 'txt',
-                speakers: false,
-                timecodes: true,
-                isDownload: true,
-              });
-              handleMenuClose();
-            }}
-          >
-            <Link color="primary">Text (Timecodes)</Link>
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              handleExport({
-                type: 'text',
-                ext: 'txt',
-                speakers: true,
-                timecodes: true,
-                isDownload: true,
-              });
-              handleMenuClose();
-            }}
-          >
-            <Link color="primary"> Text (Speakers & Timecodes)</Link>
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              handleExport({
-                type: 'text',
-                ext: 'txt',
-                speakers: true,
-                timecodes: true,
-                atlasFormat: true,
-                isDownload: true,
-              });
-              handleMenuClose();
-            }}
-          >
-            <Link color="primary"> Text (Atlas format)</Link>
-          </MenuItem>
-          <Divider />
-          <MenuItem
-            onClick={() => {
-              handleExport({
-                type: 'word',
-                ext: 'docx',
-                speakers: false,
-                timecodes: false,
-                isDownload: true,
-              });
-              handleMenuClose();
-            }}
-          >
-            <Link color="primary">
-              {' '}
-              Word (<code>.docx</code>)
-            </Link>
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              handleExport({
-                type: 'word',
-                ext: 'docx',
-                speakers: true,
-                timecodes: false,
-                isDownload: true,
-              });
-              handleMenuClose();
-            }}
-          >
-            <Link color="primary"> Word (Speakers)</Link>
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              handleExport({
-                type: 'word',
-                ext: 'docx',
-                speakers: false,
-                timecodes: true,
-                isDownload: true,
-              });
-              handleMenuClose();
-            }}
-          >
-            <Link color="primary"> Word (Timecodes)</Link>
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              handleExport({
-                type: 'word',
-                ext: 'docx',
-                speakers: true,
-                timecodes: true,
-                isDownload: true,
-              });
-              handleMenuClose();
-            }}
-          >
-            <Link color="primary"> Word (Speakers & Timecodes)</Link>
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              handleExport({
-                type: 'word',
-                ext: 'docx',
-                speakers: false,
-                timecodes: false,
-                inlineTimecodes: true,
-                hideTitle: true,
-              });
-              handleMenuClose();
-            }}
-          >
-            <Link color="primary"> Word (OHMS)</Link>
-          </MenuItem>
-          <Divider />
-          <MenuItem onClick={handleMenuClose} disabled>
-            <Link style={{ color: 'black' }}>Closed Captions Export</Link>
-          </MenuItem>
-          {subtitlesExportOptionsList.map(({ type, label, ext }, index) => {
-            return (
-              <MenuItem
-                key={index + label}
-                onClick={() => {
-                  handleExport({ type, ext, isDownload: true });
-                  handleMenuClose();
-                }}
-              >
-                <Link color="primary">
-                  {label} (<code>.{ext}</code>)
-                </Link>
-              </MenuItem>
-            );
-          })}
-          <Divider />
-          <MenuItem onClick={handleMenuClose} disabled>
-            <Link style={{ color: 'black' }}>Developer options</Link>
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              handleExport({
-                type: 'json-slate',
-                ext: 'json',
-                speakers: true,
-                timecodes: true,
-                isDownload: true,
-              });
-              handleMenuClose();
-            }}
-          >
-            <Link color="primary">
-              SlateJs (<code>.json</code>)
-            </Link>
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              handleExport({
-                type: 'json-digitalpaperedit',
-                ext: 'json',
-                speakers: true,
-                timecodes: true,
-                isDownload: true,
-              });
-              handleMenuClose();
-            }}
-          >
-            <Link color="primary">
-              DPE (<code>.json</code>)
-            </Link>
-          </MenuItem>
-        </Menu>
-
+       
+        <Grid item>
+          
         {isEditable && (
           <Tooltip title={<Typography variant="body1">save</Typography>}>
             <Button disabled={isProcessing} onClick={handleSave} color="primary">
-              <SaveOutlinedIcon color={isContentSaved ? 'primary' : 'secondary'} />
+              {/*  <SaveOutlinedIcon color={isContentSaved ? 'primary' : 'secondary'} /> */}
+              <FontAwesomeIcon icon={faSave} size="2x" />
             </Button>
           </Tooltip>
         )}
       </Grid>
+      
       {isEditable && (
         <>
-          {/* TODO: Disabiling until find a way to handle timecodes and alignment on paragraph break */}
-          {/* <Tooltip
-        title={`To insert a paragraph break, and split a pargraph in two, put the cursor at a point where you'd want to add a paragraph break in the text and either click this button or hit enter key`}
-      >
-        <Button disabled={isProcessing} onClick={handleSplitParagraph} color="primary">
-          <KeyboardReturnOutlinedIcon color="primary" />
-        </Button>
-      </Tooltip> */}
-          {/*  */}
-          <Grid item>
-            <br />
-          </Grid>
+        <Grid item>
+          <br />
+        </Grid>
           <Grid item>
             <Tooltip
               title={
@@ -298,13 +86,15 @@ function SideBtns({
               }
             >
               <Button disabled={isProcessing} onClick={insertTextInaudible} color="primary">
-                <EmojiSymbolsOutlinedIcon color="primary" />
+                {/*    <EmojiSymbolsOutlinedIcon color="primary" /> */ }
+                <FontAwesomeIcon icon={faQuestion} size="2x" />
               </Button>
             </Tooltip>
 
             <Tooltip title={<Typography variant="body1">Insert a ♪ in the text</Typography>}>
               <Button disabled={isProcessing} onClick={handleInsertMusicNote} color="primary">
-                <MusicNoteOutlinedIcon color="primary" />
+                {/*<MusicNoteOutlinedIcon color="primary" /> */}
+                <FontAwesomeIcon icon={faItunesNote} size="2x" />
               </Button>
             </Tooltip>
           </Grid>
@@ -323,7 +113,8 @@ function SideBtns({
               }
             >
               <Button onClick={handleUndo} color="primary">
-                <UndoOutlinedIcon color="primary" />
+                {/* <UndoOutlinedIcon color="primary" />*/}
+                <FontAwesomeIcon icon={faUndoAlt} size="2x" />
               </Button>
             </Tooltip>
 
@@ -334,8 +125,9 @@ function SideBtns({
                 </Typography>
               }
             >
-              <Button onClick={handleRedo} color="primary">
-                <RedoIcon color="primary" />
+              <Button onClick={handleRedo} color="primary">                
+                {/*<RedoIcon color="primary" /> */}
+                <FontAwesomeIcon icon={faRedoAlt} size="2x" />
               </Button>
             </Tooltip>
           </Grid>
@@ -372,6 +164,8 @@ function SideBtns({
           <Grid item>
             <br />
           </Grid>
+          
+          {/*  
           <Grid item>
             <Tooltip title={<Typography variant="body1">{REPLACE_WHOLE_TEXT_INSTRUCTION}</Typography>}>
               <Button onClick={handleReplaceText} color="primary">
@@ -379,6 +173,7 @@ function SideBtns({
               </Button>
             </Tooltip>
           </Grid>
+          */}
           {/* <Tooltip title={' Double click on a word to jump to the corresponding point in the media'}>
         <Button disabled={isProcessing} color="primary">
           <InfoOutlined color="primary" />
