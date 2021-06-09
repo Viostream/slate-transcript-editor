@@ -27,6 +27,6 @@ jobs:
           sed -i 's/"version": ".*",$/"version": "'${{ steps.tag.outputs.new_tag }}'",/' package.json
           cat package.json
       - run: npm install
-      - uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
+      - run: npm run publish:public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
