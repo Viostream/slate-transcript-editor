@@ -1,5 +1,8 @@
 # Slate transcript editor
 
+[![Package](https://github.com/Viostream/slate-transcript-editor/actions/workflows/package.yml/badge.svg)](https://github.com/Viostream/slate-transcript-editor/actions/workflows/package.yml)
+[![Dependency audit](https://github.com/Viostream/slate-transcript-editor/actions/workflows/audit.yml/badge.svg)](https://github.com/Viostream/slate-transcript-editor/actions/workflows/audit.yml)
+
 <!-- _One liner + link to confluence page_
 _Screenshot of UI - optional_ -->
 
