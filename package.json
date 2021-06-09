@@ -67,9 +67,9 @@
     "lodash": "^4.17.20",
     "p-debounce": "^3.0.1",
     "prop-types": "^15.7.2",
-    "sbd": "^1.0.18",
-    "slate": "^0.59.0",
-    "slate-history": "^0.59.0",
+    "sbd": "^1.0.19",
+    "slate": "^0.63.0",
+    "slate-history": "^0.62.0",
     "slate-react": "^0.59.0",
     "smpte-timecode": "^1.2.3",
     "stt-align-node": "^1.1.10-alpha.1"
