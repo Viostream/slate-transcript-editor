@@ -21,11 +21,13 @@ jobs:
         uses: Viostream/github-tag-action@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: |
+          echo "writing tag"
+          sed -i 's/"version": ".*",$/"version": "${{ secrets.GITHUB_TOKEN }}",/' package.json
       - run: npm install
       - uses: JS-DevTools/npm-publish@v1
         with:
           registry: https://npm.pkg.github.com
-          tag: ${{ steps.tag.outputs.new_tag }}
           token: ${{ secrets.GITHUB_TOKEN }}
   npm_audit:
     name: dependency audit
