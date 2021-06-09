@@ -1,0 +1,37 @@
+# ====================================================
+# Viostream JS package workflow
+# ====================================================
+
+name: Package
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    name: Publish a new version to Github package registry
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: '0'
+      - id: tag
+        uses: Viostream/github-tag-action@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: npm install
+      - uses: actions/npm-publish
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ steps.tag.outputs.new_tag }}
+  npm_audit:
+    name: dependency audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: npm audit
+        run: |
+          cd ${{ env.subfolder }}
+          npm audit --audit-level=${{ env.npm_audit_level }} --production

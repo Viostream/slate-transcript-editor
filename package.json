@@ -1,5 +1,5 @@
 {
-  "name": "slate-transcript-editor",
+  "name": "@viostream/slate-transcript-editor",
   "version": "0.1.6-alpha.14",
   "description": "A React component to make correcting automated transcriptions of audio and video easier and faster. Using the Slate Editor",
   "main": "index.js",
@@ -11,7 +11,7 @@
     "deploy:ghpages": "npm run build-storybook  && cp .nojekyll .out/.nojekyll && gh-pages -d .out",
     "build:component": "cross-env BABEL_ENV=production babel src -d dist && /bin/cp -rf package.json dist && /bin/cp -rf README.md dist",
     "publish:public": "npm run build:component && npm publish dist --access public",
-    "publish:dry:run": "npm run build:component && npm publish  dist --dry-run",
+    "publish:dry:run": "npm run build:component && npm publish dist --dry-run",
     "lint": "prettier --write \"**/*.js\""
   },
   "keywords": [],
@@ -23,12 +23,12 @@
     }
   ],
   "bugs": {
-    "url": "https://github.com/pietrop/slate-transcript-editor/issues"
+    "url": "https://github.com/viostream/slate-transcript-editor/issues"
   },
-  "homepage": "https://github.com/pietrop/slate-transcript-editor",
+  "homepage": "https://github.com/viostream/slate-transcript-editor",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pietrop/slate-transcript-editor.git"
+    "url": "git+https://github.com/viostream/slate-transcript-editor.git"
   },
   "license": "MIT",
   "devDependencies": {
