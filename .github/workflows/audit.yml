@@ -1,0 +1,12 @@
+name: Dependency audit
+
+on: push
+
+jobs:
+  npm_audit:
+    name: dependency audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: npm audit
+        run: npm audit --production

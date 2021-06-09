@@ -29,11 +29,3 @@ jobs:
         with:
           registry: https://npm.pkg.github.com
           token: ${{ secrets.GITHUB_TOKEN }}
-  npm_audit:
-    name: dependency audit
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: npm audit
-        run: |
-          npm audit --production
