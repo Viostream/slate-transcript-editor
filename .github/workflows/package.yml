@@ -33,5 +33,4 @@ jobs:
       - uses: actions/checkout@v2
       - name: npm audit
         run: |
-          cd ${{ env.subfolder }}
-          npm audit --audit-level=${{ env.npm_audit_level }} --production
+          npm audit --production
