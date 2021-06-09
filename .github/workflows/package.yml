@@ -11,7 +11,7 @@ on:
 
 jobs:
   publish:
-    name: Publish a new version to Github package registry
+    name: Publish a new version to NPM
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -27,6 +27,6 @@ jobs:
           sed -i 's/"version": ".*",$/"version": "'${{ steps.tag.outputs.new_tag }}'",/' package.json
           cat package.json
       - run: npm install
-      - run: npm run publish:public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
