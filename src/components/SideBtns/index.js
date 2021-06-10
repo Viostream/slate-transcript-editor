@@ -23,6 +23,7 @@ import subtitlesExportOptionsList from '../../util/export-adapters/subtitles-gen
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave } from '@fortawesome/free-solid-svg-icons'
+import { faUpload } from '@fortawesome/free-solid-svg-icons'
 import { faQuestion } from '@fortawesome/free-solid-svg-icons'
 import { faItunesNote } from '@fortawesome/free-brands-svg-icons'
 import { faUndoAlt } from '@fortawesome/free-solid-svg-icons'
@@ -65,10 +66,10 @@ function SideBtns({
       <Grid item>
           
         {isEditable && (
-          <Tooltip title={<Typography variant="body1">save</Typography>}>
+          <Tooltip title={<Typography variant="body1">publish changes</Typography>}>
             <Button disabled={isProcessing} onClick={handleSave} color={isContentSaved ? 'primary' : 'secondary'} style={{fontSize:"1.1rem"}}>
               {/*  <SaveOutlinedIcon color={isContentSaved ? 'primary' : 'secondary'} /> */}
-              <FontAwesomeIcon icon={faSave} size="lg" />
+              <FontAwesomeIcon icon={faUpload} size="lg" />
             </Button>
           </Tooltip>
         )}
