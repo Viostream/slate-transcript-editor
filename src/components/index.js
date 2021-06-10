@@ -792,7 +792,7 @@ function SlateTranscriptEditor(props) {
                 </Grid>
               </Grid>
 
-              <Grid item>
+              <Grid item style={{marginTop:"3rem"}}>
                 <Tooltip
                   enterDelay={100}
                   title={
@@ -812,11 +812,11 @@ function SlateTranscriptEditor(props) {
                           <KeyboardReturnOutlinedIcon /> Hit enter in between words to split a paragraph.
                           <br />
                           <SaveIcon />
-                          Remember to save regularly.
+                          Publish your changes
                           <br />
                         </>
                       )}
-                      <SaveAltIcon /> Export to get a copy.
+                      {/*<SaveAltIcon /> Export to get a copy.*/}
                     </Typography>
                   }
                 >
@@ -834,6 +834,8 @@ function SlateTranscriptEditor(props) {
                   </div>
                 </Tooltip>
               </Grid>
+
+              { /* 
               <Grid item>
                 <Link
                   color="inherit"
@@ -862,6 +864,7 @@ function SlateTranscriptEditor(props) {
                   })}
                 </Collapse>
               </Grid>
+              */}
               {/* <Grid item>{props.children}</Grid> */}
             </Grid>
             <Grid item>{props.children}</Grid>
@@ -900,7 +903,7 @@ function SlateTranscriptEditor(props) {
             )}
           </Grid>
 
-          <Grid container item xs={12} sm={1} md={1} lg={1} xl={1}>
+          <Grid container item xs={12} sm={1} md={1} lg={1} xl={1}> 
             <SideBtns
               handleExport={handleExport}
               isProcessing={isProcessing}
