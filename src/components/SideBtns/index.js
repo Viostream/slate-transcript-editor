@@ -23,6 +23,7 @@ import subtitlesExportOptionsList from '../../util/export-adapters/subtitles-gen
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave } from '@fortawesome/free-solid-svg-icons'
+import { faUpload } from '@fortawesome/free-solid-svg-icons'
 import { faQuestion } from '@fortawesome/free-solid-svg-icons'
 import { faItunesNote } from '@fortawesome/free-brands-svg-icons'
 import { faUndoAlt } from '@fortawesome/free-solid-svg-icons'
@@ -60,132 +61,63 @@ function SideBtns({
   };
 
   return (
-    <Grid container direction="column" justify="flex-start" alignItems="stretch">
+    <Grid container spacing="2" direction="column" justify="flex-start" alignItems="flex-start">
        
-        <Grid item>
+      <Grid item>
           
         {isEditable && (
-          <Tooltip title={<Typography variant="body1">save</Typography>}>
-            <Button disabled={isProcessing} onClick={handleSave} color="primary">
+          <Tooltip title={<Typography variant="body1">publish changes</Typography>}>
+            <Button disabled={isProcessing} onClick={handleSave} color={isContentSaved ? 'primary' : 'secondary'} style={{fontSize:"1.1rem"}}>
               {/*  <SaveOutlinedIcon color={isContentSaved ? 'primary' : 'secondary'} /> */}
-              <FontAwesomeIcon icon={faSave} size="2x" />
+              <FontAwesomeIcon icon={faUpload} size="lg" />
             </Button>
           </Tooltip>
         )}
       </Grid>
       
       {isEditable && (
-        <>
-        <Grid item>
-          <br />
-        </Grid>
+        <>        
           <Grid item>
             <Tooltip
-              title={
-                <Typography variant="body1">Put the cursor at a point where you'd want to add [INAUDIBLE] text, and click this button</Typography>
-              }
-            >
-              <Button disabled={isProcessing} onClick={insertTextInaudible} color="primary">
+              title={<Typography variant="body1">Put the cursor at a point where you'd want to add [INAUDIBLE] text, and click this button</Typography>}>
+              <Button disabled={isProcessing} onClick={insertTextInaudible} color="primary" style={{fontSize:"1.1rem"}}>
                 {/*    <EmojiSymbolsOutlinedIcon color="primary" /> */ }
-                <FontAwesomeIcon icon={faQuestion} size="2x" />
+                <FontAwesomeIcon icon={faQuestion} fixedWidth size="lg"/>
               </Button>
-            </Tooltip>
-
-            <Tooltip title={<Typography variant="body1">Insert a ♪ in the text</Typography>}>
-              <Button disabled={isProcessing} onClick={handleInsertMusicNote} color="primary">
+            </Tooltip>          
+          </Grid>
+           <Grid item>
+             <Tooltip title={<Typography variant="body1">Insert a ♪ in the text</Typography>}>
+              <Button disabled={isProcessing} onClick={handleInsertMusicNote} color="primary" style={{fontSize:"1.1rem"}}>
                 {/*<MusicNoteOutlinedIcon color="primary" /> */}
-                <FontAwesomeIcon icon={faItunesNote} size="2x" />
+                <FontAwesomeIcon icon={faItunesNote} fixedWidth  size="lg" />
               </Button>
             </Tooltip>
-          </Grid>
-
-          {/*  */}
-          <Grid item>
-            <br />
-          </Grid>
+           </Grid>
           <Grid item>
             <Tooltip
-              title={
-                <Typography variant="body1">
-                  Undo <br />
-                  <code>cmd</code> <code>z</code>
-                </Typography>
-              }
-            >
-              <Button onClick={handleUndo} color="primary">
+              title={<Typography variant="body1"> Undo <br /> <code>cmd</code> <code>z</code> </Typography> }>
+              <Button onClick={handleUndo} color="primary"  style={{fontSize:"1.1rem"}} >
                 {/* <UndoOutlinedIcon color="primary" />*/}
-                <FontAwesomeIcon icon={faUndoAlt} size="2x" />
-              </Button>
-            </Tooltip>
-
-            <Tooltip
-              title={
-                <Typography variant="body1">
-                  Redo <br /> <code>cmd</code> <code>shift</code> <code>z</code>
-                </Typography>
-              }
-            >
-              <Button onClick={handleRedo} color="primary">                
-                {/*<RedoIcon color="primary" /> */}
-                <FontAwesomeIcon icon={faRedoAlt} size="2x" />
+                <FontAwesomeIcon icon={faUndoAlt} fixedWidth  size="lg" />
               </Button>
             </Tooltip>
           </Grid>
-          {/* <Tooltip
-        title={
-          ' Restore timecodes. At the moment for transcript over 1hour it could temporarily freeze the UI for a few seconds'
-        }
-      >
-        <Button
-          disabled={isProcessing}
-          onClick={async () => {
-            try {
-              setIsProcessing(true);
-              await handleRestoreTimecodes();
-              if (handleAnalyticsEvents) {
-                // handles if click cancel and doesn't set speaker name
-                handleAnalyticsEvents('ste_handle_restore_timecodes_btn', {
-                  fn: 'handleRestoreTimecodes',
-                });
-              }
-            } finally {
-              setIsProcessing(false);
-            }
-          }}
-          color="primary"
-        >
-          <CachedOutlinedIcon
-            color={'primary'}
-            // color={isContentModified ? 'secondary' : 'primary'}
-          />
-        </Button>
-      </Tooltip> */}
-          {/*  */}
           <Grid item>
-            <br />
+            <Tooltip
+              title={<Typography variant="body1"> Redo <br /> <code>cmd</code> <code>shift</code> <code>z</code></Typography>}>
+              <Button onClick={handleRedo} color="primary"  style={{fontSize:"1.1rem"}}>                
+                {/*<RedoIcon color="primary" /> */}
+                <FontAwesomeIcon icon={faRedoAlt} fixedWidth  size="lg" />
+              </Button>
+            </Tooltip>
           </Grid>
           
-          {/*  
-          <Grid item>
-            <Tooltip title={<Typography variant="body1">{REPLACE_WHOLE_TEXT_INSTRUCTION}</Typography>}>
-              <Button onClick={handleReplaceText} color="primary">
-                <ImportExportIcon color="primary" />
-              </Button>
-            </Tooltip>
-          </Grid>
-          */}
-          {/* <Tooltip title={' Double click on a word to jump to the corresponding point in the media'}>
-        <Button disabled={isProcessing} color="primary">
-          <InfoOutlined color="primary" />
-        </Button>
-      </Tooltip> */}
+          <Grid item>{optionalBtns}</Grid>
         </>
       )}
-      <Grid item>
-        <br />
-      </Grid>
-      <Grid item>{optionalBtns}</Grid>
     </Grid>
+
   );
 }
 
