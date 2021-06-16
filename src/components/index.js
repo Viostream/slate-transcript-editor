@@ -553,8 +553,9 @@ function SlateTranscriptEditor(props) {
   const handleSave = async () => {
     try {
       setIsProcessing(true);
-      const format = props.autoSaveContentType ? props.autoSaveContentType : 'digitalpaperedit';
-      const editorContnet = await handleExport({ type: `json-${format}`, isDownload: false });
+      // Modified so autoSaveContentType 
+      const format = props.autoSaveContentType ? props.autoSaveContentType : 'json-digitalpaperedit'; 
+      const editorContnet = await handleExport({ type: format, isDownload: false });      
       if (props.handleAnalyticsEvents) {
         // handles if click cancel and doesn't set speaker name
         props.handleAnalyticsEvents('ste_handle_save', {
@@ -721,7 +722,7 @@ function SlateTranscriptEditor(props) {
           </Tooltip>
         )}
 
-        <Grid container direction="row" justify="center" alignItems="stretch" spacing={2}>
+        <Grid container direction="row" justify="center" alignItems="stretch">
           <Grid item xs={12} sm={4} md={4} lg={4} xl={4} container direction="column" justify="space-between" alignItems="stretch">
             <Grid container direction="column" justify="flex-start" alignItems="stretch" spacing={2}>
               <Grid item container>
