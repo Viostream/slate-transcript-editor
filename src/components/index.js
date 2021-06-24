@@ -835,7 +835,7 @@ function SlateTranscriptEditor(props) {
                   >
                     <InfoOutlinedIcon fontSize="small" color="primary" />
                     <Typography color="primary" variant="body1">
-                      How Does this work?
+                      How does this work?
                     </Typography>
                   </div>
                 </Tooltip>
