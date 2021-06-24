@@ -678,7 +678,7 @@ function SlateTranscriptEditor(props) {
   return (
     <div style={{ paddingTop: '1em' }}>
       <CssBaseline />
-      <Container style={{paddingLeft:"0px", paddingRight:"0px"}}>
+      <Container style={{paddingLeft:"0px", paddingRight:"0px"}} maxWidth="xl">
         <Paper elevation={3} />
         <style scoped>
           {`/* Next words */
