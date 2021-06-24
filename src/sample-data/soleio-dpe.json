@@ -4,19 +4,22 @@
       "id": 0,
       "start": 1.41,
       "end": 1.63,
-      "text": "So"
+      "text": "So",
+      "confidence": 0.46
     },
     {
       "id": 1,
       "start": 1.63,
       "end": 2.175,
-      "text": "tell"
+      "text": "tell",
+      "confidence": 0.50
     },
     {
       "id": 1,
       "start": 2.176,
       "end": 2.179,
-      "text": ""
+      "text": "",
+      "confidence": 0.32
     },
     {
       "id": 2,
@@ -21497,13 +21500,15 @@
     {
       "id": 0,
       "start": 1.41,
-      "end": 4.88,
+      "end": 4.88,    
+      "confidence":0.5,  
       "speaker": "James Jacoby"
     },
     {
       "id": 1,
       "start": 4.88,
-      "end": 7.21,
+      "end": 7.21, 
+      "confidence":0.25,       
       "speaker": "James Jacoby"
     },
     {
@@ -21515,7 +21520,7 @@
     {
       "id": 3,
       "start": 10.94,
-      "end": 14.94,
+      "end": 14.94,      
       "speaker": "Soleio Cuervo"
     },
     {

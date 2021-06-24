@@ -61,7 +61,7 @@ function SideBtns({
   };
 
   return (
-    <Grid container spacing="2" direction="column" justify="flex-start" alignItems="flex-start">
+    <Grid container spacing={1} direction="column" justify="flex-start" alignItems="flex-start">
        
       <Grid item>
           

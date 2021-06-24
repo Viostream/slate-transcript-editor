@@ -262,13 +262,18 @@ function SlateTranscriptEditor(props) {
     }
   }, []);
 
-  const renderLeaf = useCallback(({ attributes, children, leaf }) => {
+  const renderLeaf = useCallback(({ attributes, children, leaf }) => {  
+    
+    let title = (children.props.parent.potentialIssues || 0) === 0 ? "" : `${children.props.parent.potentialIssues} potenital issues detected`;
     return (
       <span
         onDoubleClick={handleTimedTextClick}
         className={'timecode text'}
-        data-start={children.props.parent.start}
+        data-start={children.props.parent.start}        
         data-previous-timings={children.props.parent.previousTimings}
+        data-confidence={children.props.parent.confidence}
+        style={{background : `rgba(244, 67, 54, ${children.props.parent.confidence})`}}
+        title={title}
         // title={'double click on a word to jump to the corresponding point in the media'}
         {...attributes}
       >
@@ -359,7 +364,7 @@ function SlateTranscriptEditor(props) {
               // }}
               onDoubleClick={handleTimedTextClick}
               title={props.element.startTimecode}
-              data-start={props.element.start}
+              data-start={props.element.start}              
             >
               {props.element.startTimecode}
             </code>
@@ -722,7 +727,7 @@ function SlateTranscriptEditor(props) {
           </Tooltip>
         )}
 
-        <Grid container direction="row" justify="center" alignItems="stretch">
+        <Grid container direction="row" justify="center" alignItems="stretch" spacing={2}>
           <Grid item xs={12} sm={4} md={4} lg={4} xl={4} container direction="column" justify="space-between" alignItems="stretch">
             <Grid container direction="column" justify="flex-start" alignItems="stretch">
               <Grid item container>
