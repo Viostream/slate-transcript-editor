@@ -678,7 +678,7 @@ function SlateTranscriptEditor(props) {
   return (
     <div style={{ paddingTop: '1em' }}>
       <CssBaseline />
-      <Container>
+      <Container style={{paddingLeft:"0px", paddingRight:"0px"}}>
         <Paper elevation={3} />
         <style scoped>
           {`/* Next words */
@@ -727,9 +727,9 @@ function SlateTranscriptEditor(props) {
           </Tooltip>
         )}
 
-        <Grid container direction="row" justify="center" alignItems="stretch" spacing={2}>
-          <Grid item xs={12} sm={4} md={4} lg={4} xl={4} container direction="column" justify="space-between" alignItems="stretch">
-            <Grid container direction="column" justify="flex-start" alignItems="stretch">
+        <Grid container direction="row" justify="center" alignItems="stretch" spacing={0}>
+          <Grid item xs={12} sm={4} md={4} lg={4} xl={4} container direction="column" justify="space-between" alignItems="stretch" >
+            <Grid container direction="column" justify="flex-start" alignItems="stretch" style={{paddingRight:"10px"}}>
               <Grid item container>
                 <video
                   style={{ backgroundColor: 'black' }}
