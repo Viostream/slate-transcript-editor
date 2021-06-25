@@ -45,6 +45,13 @@ import exportAdapter, { isCaptionType } from '../util/export-adapters';
 import generatePreviousTimingsUpToCurrent from '../util/dpe-to-slate/generate-previous-timings-up-to-current';
 import SlateHelpers from './slate-helpers';
 
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUpload } from '@fortawesome/free-solid-svg-icons'
+import { faKeyboard } from '@fortawesome/free-solid-svg-icons'
+import { faParagraph } from '@fortawesome/free-solid-svg-icons'
+import { faAlignJustify } from '@fortawesome/free-solid-svg-icons'
+
 const PLAYBACK_RATE_VALUES = [0.2, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 3, 3.5];
 const SEEK_BACK_SEC = 10;
 const PAUSE_WHILTE_TYPING_TIMEOUT_MILLISECONDS = 1500;
@@ -798,7 +805,7 @@ function SlateTranscriptEditor(props) {
                 </Grid>
               </Grid>
 
-              <Grid item style={{marginTop:"3rem"}}>
+              <Grid item style={{marginTop:"3rem", marginLeft:"1rem"}}>
                 <Tooltip
                   enterDelay={100}
                   title={
@@ -811,15 +818,22 @@ function SlateTranscriptEditor(props) {
                       Double click on a word or time stamp to jump to the corresponding point in the media. <br />
                       {props.isEditable && (
                         <>
-                          <KeyboardIcon /> Start typing to edit text.
-                          <br />
-                          <PeopleIcon /> You can add and change names of speakers in your transcript.
-                          <br />
-                          <KeyboardReturnOutlinedIcon /> Hit enter in between words to split a paragraph.
-                          <br />
-                          <SaveIcon />
-                          Publish your changes
-                          <br />
+                         
+                          <div style={{color:"#fff", marginTop:"1rem"}}>
+                              <FontAwesomeIcon icon={faKeyboard} size="lg" fixedWidth style={{marginRight:"0.5rem"}} />  Start typing to edit text.
+                          </div>                                                     
+                          {                 
+                          /*<PeopleIcon /> You can add and change names of speakers in your transcript.
+                          <br />*/}
+                          <div style={{color:"#fff", marginTop:"0.5rem"}}>
+                              <FontAwesomeIcon icon={faParagraph} size="lg" fixedWidth style={{marginRight:"0.5rem"}} />  Hit enter in between words to split a paragraph.
+                          </div> 
+                          <div style={{color:"#fff", marginTop:"0.5rem"}}>
+                              <FontAwesomeIcon icon={faAlignJustify} size="lg"fixedWidth style={{marginRight:"0.5rem"}} />  Use the backspace key to merge lines together.
+                          </div>                                                      
+                          <div style={{color:"#fff", marginTop:"0.5rem", marginBottom:"1rem"}}>
+                              <FontAwesomeIcon icon={faUpload} size="lg" fixedWidth style={{marginRight:"0.5rem"}} />  Publish your changes
+                          </div>                                                    
                         </>
                       )}
                       {/*<SaveAltIcon /> Export to get a copy.*/}
@@ -835,7 +849,7 @@ function SlateTranscriptEditor(props) {
                   >
                     <InfoOutlinedIcon fontSize="small" color="primary" />
                     <Typography color="primary" variant="body1">
-                      How does this work?
+                       How does this work?
                     </Typography>
                   </div>
                 </Tooltip>
