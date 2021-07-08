@@ -271,7 +271,7 @@ function SlateTranscriptEditor(props) {
 
   const renderLeaf = useCallback(({ attributes, children, leaf }) => {  
     
-    let title = (children.props.parent.potentialIssues || 0) === 0 ? "" : `${children.props.parent.potentialIssues} potenital issues detected`;
+    let title = (children.props.parent.potentialIssues || 0) === 0 ? "" : `${children.props.parent.potentialIssues} potential issues detected`;
     return (
       <span
         onDoubleClick={handleTimedTextClick}
