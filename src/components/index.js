@@ -281,8 +281,7 @@ function SlateTranscriptEditor(props) {
         data-previous-timings={children.props.parent.previousTimings}
         data-confidence={children.props.parent.confidence}
         style={{background : `rgba(244, 67, 54, ${opacity})`}}
-        title={title}
-        // title={'double click on a word to jump to the corresponding point in the media'}
+        title={title}       
         {...attributes}
       >
         {children}
