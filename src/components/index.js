@@ -272,7 +272,8 @@ function SlateTranscriptEditor(props) {
   const renderLeaf = useCallback(({ attributes, children, leaf }) => {  
     
     let title = (children.props.parent.potentialIssues || 0) === 0 ? "" : `${children.props.parent.potentialIssues} potential issues detected`;
-    let confidenceInverted = 1 - children.props.parent.confidence;
+    let opacity = 1 - children.props.parent.confidence;
+    var textcolor = opacity === 0 ? "rgba(0, 0, 0, 0.87)" : (opacity >= 0.8 ? "rgb(255,255,255)" : "rgba(0, 0, 0, 0.87)");
     return (
       <span
         onDoubleClick={handleTimedTextClick}
@@ -280,7 +281,7 @@ function SlateTranscriptEditor(props) {
         data-start={children.props.parent.start}        
         data-previous-timings={children.props.parent.previousTimings}
         data-confidence={children.props.parent.confidence}
-        style={{background : `rgba(244, 67, 54, ${confidenceInverted})`}}
+        style={{background : `rgba(244, 67, 54, ${opacity})`, color:textcolor}}
         title={title}
         // title={'double click on a word to jump to the corresponding point in the media'}
         {...attributes}
