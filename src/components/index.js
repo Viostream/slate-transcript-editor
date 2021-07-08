@@ -622,10 +622,10 @@ function SlateTranscriptEditor(props) {
     if (selection !== null && selection.anchor !== null) {
       Transforms.setNodes(
         editor,
-        { type: 'timedText', confidence: 0 },
+        { type: 'timedText', confidence: 1 },
         {
           at: selection,
-          match: (node) => node.type === 'timedText' && node.confidence > 0,
+          match: (node) => node.type === 'timedText' && node.confidence < 1,
         }
       );
     }
