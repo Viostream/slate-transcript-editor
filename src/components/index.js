@@ -615,6 +615,20 @@ function SlateTranscriptEditor(props) {
     editor.redo();
   };
 
+  const handleConfidenceResetToZero = () => {
+    var selection = editor.selection;
+    if (selection !== null && selection.anchor !== null) {
+      Transforms.setNodes(
+        editor,
+        { type: 'timedText', confidence: 0 },
+        {
+          at: selection,
+          match: (node) => node.type === 'timedText' && node.confidence > 0,
+        }
+      );
+    }
+  }
+
   // const debounced_version = throttle(handleRestoreTimecodes, 3000, { leading: false, trailing: true });
   // TODO: revisit logic for
   // - splitting paragraph via enter key
@@ -623,6 +637,7 @@ function SlateTranscriptEditor(props) {
   const handleOnKeyDown = async (event) => {
     setIsContentIsModified(true);
     setIsContentSaved(false);
+    handleConfidenceResetToZero();
     //  ArrowRight ArrowLeft ArrowUp ArrowUp
     if (event.key === 'Enter') {
       // intercept Enter, and handle timecodes when splitting a paragraph
