@@ -272,7 +272,7 @@ function SlateTranscriptEditor(props) {
   const renderLeaf = useCallback(({ attributes, children, leaf }) => {  
     
     let title = (children.props.parent.potentialIssues || 0) === 0 ? "" : `${children.props.parent.potentialIssues} potential issues detected`;
-    let opacity = 1 - children.props.parent.confidence;
+    let opacity = children.props.parent.confidence === 1 ? 0 : 0.4;
     var textcolor = opacity === 0 ? "rgba(0, 0, 0, 0.87)" : (opacity >= 0.8 ? "rgb(255,255,255)" : "rgba(0, 0, 0, 0.87)");
     return (
       <span
